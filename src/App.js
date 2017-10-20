@@ -11,31 +11,28 @@ class App extends Component {
 
   loadPokemon = (e) => {
     e.preventDefault();
+    if(this.state.num.length > 0){
+      console.log(e.target.value)
     fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.num}`)
     .then(res => res.json())
     .then(body =>{
       this.setState({
         data : body,
-        txt : true
+        txt : true,
       });
     })
-    .catch(err => {throw err})
+    .catch(err => {throw err});  
   }
+}
 
   handleInputChange = (e) =>{
+          console.log(e.target.value)
+
     this.setState({
       num : e.target.value,
     })
   } 
 
-  /*  testImg(){
-    if (this.state.data !== ""){
-  return this.state.data.sprites.front_default
-    }
-    else {
-  alert("Merci d'entrer un numéro") 
-    }
-  }  */
 
   render() {
     return (
